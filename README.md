@@ -1,4 +1,4 @@
-# ⚛ AtomQuest — Goal Setting & Tracking Portal
+# AtomQuest Hackathon — Goal Setting & Tracking Portal
 
 A full-stack web portal for employee goal setting, approval workflows, quarterly achievement tracking, and analytics.
 
