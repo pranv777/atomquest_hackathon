@@ -9,7 +9,7 @@ app = FastAPI(title="AtomQuest Goal Tracking Portal", version="1.0.0")
 
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=["https://atomquesthackathon-production.up.railway.app/", "https://caring-recreation-production.up.railway.app/login"],
+    allow_origins=["https://atomquesthackathon-production.up.railway.app", "https://caring-recreation-production.up.railway.app/login"],
     allow_credentials=True,
     allow_methods=["*"],
     allow_headers=["*"],
