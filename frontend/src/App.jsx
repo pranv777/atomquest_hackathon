@@ -16,7 +16,11 @@ import AuditLogs from './pages/AuditLogs'
 function ProtectedRoute({ children, roles }) {
   const { user } = useAuth()
   if (!user) return <Navigate to="/login" replace />
-  if (roles && !roles.includes(user.role)) return <Navigate to="/dashboard" replace />
+  
+  // Handle role as enum or string
+  const userRole = typeof user.role === 'string' ? user.role : user.role.value
+  if (roles && !roles.includes(userRole)) return <Navigate to="/dashboard" replace />
+  
   return <Layout>{children}</Layout>
 }
 
