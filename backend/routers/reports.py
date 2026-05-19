@@ -8,7 +8,7 @@ from database import get_db
 import models
 from auth import get_current_user, require_role
 
-router = APIRouter(prefix="/api/reports", tags=["reports"])
+router = APIRouter(tags=["reports"])
 
 
 @router.get("/completion-dashboard")
