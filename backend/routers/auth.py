@@ -25,11 +25,12 @@ def login(credentials: LoginRequest, db: Session = Depends(get_db)):
     
     token = create_access_token({"sub": str(user.id)})
     
+    # Fully serialized user data - convert all enums and objects
     user_data = {
         "id": user.id,
         "name": user.name,
         "email": user.email,
-        "role": user.role.value, 
+        "role": user.role.value,  # Convert enum to string
         "department_id": user.department_id,
         "manager_id": user.manager_id,
         "is_active": user.is_active,
@@ -39,11 +40,11 @@ def login(credentials: LoginRequest, db: Session = Depends(get_db)):
         } if user.department else None
     }
     
-    return {
-        "access_token": token, 
-        "token_type": "bearer", 
-        "user": user_data
-    }
+    return schemas.Token(
+        access_token=token,
+        token_type="bearer",
+        user=schemas.UserOut(**user_data)
+    )
 
 @router.get("/me", response_model=schemas.UserWithManager)
 def me(current_user: models.User = Depends(get_current_user)):
