@@ -29,7 +29,7 @@ def login(credentials: LoginRequest, db: Session = Depends(get_db)):
         "id": user.id,
         "name": user.name,
         "email": user.email,
-        "role": user.role,
+        "role": str(user.role),
         "department_id": user.department_id,
         "manager_id": user.manager_id,
         "is_active": user.is_active,
