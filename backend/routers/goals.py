@@ -8,7 +8,7 @@ from auth import get_current_user, require_role
 from audit import log_action
 from progress import compute_progress_score
 
-router = APIRouter(prefix="/api/goals", tags=["goals"])
+router = APIRouter(tags=["goals"])
 
 
 # ── Goal Sheets ───────────────────────────────────────────────────────────────
