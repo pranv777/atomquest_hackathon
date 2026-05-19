@@ -6,7 +6,7 @@ from database import get_db
 import models
 from auth import require_role
 
-router = APIRouter(prefix="/api/analytics", tags=["analytics"])
+router = APIRouter(tags=["analytics"])
 
 QUARTERS = ["q1", "q2", "q3", "q4"]
 
