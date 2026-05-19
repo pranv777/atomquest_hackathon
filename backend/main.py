@@ -16,11 +16,11 @@ app.add_middleware(
 )
 
 # Include routers
-app.include_router(auth.router, prefix="/auth", tags=["auth"])
-app.include_router(users.router, prefix="/users", tags=["users"])
-app.include_router(goals.router, prefix="/goals", tags=["goals"])
-app.include_router(reports.router, prefix="/reports", tags=["reports"])
-app.include_router(analytics.router, prefix="/analytics", tags=["analytics"])
+app.include_router(auth.router, prefix="/api/auth", tags=["auth"])
+app.include_router(users.router, prefix="/api/users", tags=["users"])
+app.include_router(goals.router, prefix="/api/goals", tags=["goals"])
+app.include_router(reports.router, prefix="/api/reports", tags=["reports"])
+app.include_router(analytics.router, prefix="/api/analytics", tags=["analytics"])
 
 
 @app.on_event("startup")
