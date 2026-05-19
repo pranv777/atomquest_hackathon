@@ -9,11 +9,9 @@ export function AuthProvider({ children }) {
   })
 
   const login = useCallback(async (email, password) => {
-    const form = new URLSearchParams()
-    form.append('username', email)
-    form.append('password', password)
-    const { data } = await api.post('/auth/login', form, {
-      headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+    const { data } = await api.post('/auth/login', {
+      email: email,
+      password: password
     })
     localStorage.setItem('token', data.access_token)
     localStorage.setItem('user', JSON.stringify(data.user))
