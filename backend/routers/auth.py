@@ -5,7 +5,7 @@ from database import get_db
 import models, schemas
 from auth import verify_password, create_access_token, get_current_user, hash_password
 
-router = APIRouter(prefix="/auth", tags=["auth"])
+router = APIRouter(tags=["auth"])
 
 # Request schema for login
 class LoginRequest(BaseModel):
