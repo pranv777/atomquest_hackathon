@@ -24,7 +24,26 @@ def login(credentials: LoginRequest, db: Session = Depends(get_db)):
         raise HTTPException(status_code=403, detail="Account is disabled")
     
     token = create_access_token({"sub": str(user.id)})
-    return {"access_token": token, "token_type": "bearer", "user": user}
+    
+    user_data = {
+        "id": user.id,
+        "name": user.name,
+        "email": user.email,
+        "role": user.role,
+        "department_id": user.department_id,
+        "manager_id": user.manager_id,
+        "is_active": user.is_active,
+        "department": {
+            "id": user.department.id,
+            "name": user.department.name
+        } if user.department else None
+    }
+    
+    return {
+        "access_token": token, 
+        "token_type": "bearer", 
+        "user": user_data
+    }
 
 @router.get("/me", response_model=schemas.UserWithManager)
 def me(current_user: models.User = Depends(get_current_user)):
