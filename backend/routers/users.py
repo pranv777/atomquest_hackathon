@@ -6,7 +6,7 @@ import models, schemas
 from auth import get_current_user, require_role, hash_password
 from audit import log_action
 
-router = APIRouter(prefix="/api/users", tags=["users"])
+router = APIRouter(tags=["users"])
 
 
 @router.get("/", response_model=List[schemas.UserOut])
